@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "fake-broker",
+  "displayName": "Synthetic Broker",
+  "description": "A local-only broker used to test safe form planning and execution.",
+  "homepage": "http://127.0.0.1:4173/removal",
+  "fixture": true,
+  "allowedDomains": ["127.0.0.1"],
+  "resourceDomains": [],
+  "jurisdictions": ["US-GA"],
+  "requestTypes": ["delete", "suppress"],
+  "supportLevel": "fixture",
+  "policyBasis": "voluntary",
+  "lastVerified": "2026-08-20",
+  "workflow": {
+    "steps": [
+      {
+        "type": "navigate",
+        "url": "http://127.0.0.1:4173/removal"
+      },
+      {
+        "type": "fill",
+        "field": "subject.name.first",
+        "target": {
+          "strategy": "label",
+          "value": "First name"
+        }
+      },
+      {
+        "type": "fill",
+        "field": "subject.name.last",
+        "target": {
+          "strategy": "label",
+          "value": "Last name"
+        }
+      },
+      {
+        "type": "fill",
+        "field": "subject.primaryEmail",
+        "target": {
+          "strategy": "label",
+          "value": "Email address"
+        }
+      },
+      {
+        "type": "fill",
+        "field": "subject.currentAddress.line1",
+        "target": {
+          "strategy": "label",
+          "value": "Street address"
+        }
+      },
+      {
+        "type": "fill",
+        "field": "subject.currentAddress.city",
+        "target": {
+          "strategy": "label",
+          "value": "City"
+        }
+      },
+      {
+        "type": "fill",
+        "field": "subject.currentAddress.region",
+        "target": {
+          "strategy": "label",
+          "value": "State"
+        }
+      },
+      {
+        "type": "fill",
+        "field": "subject.currentAddress.postalCode",
+        "target": {
+          "strategy": "label",
+          "value": "ZIP code"
+        }
+      },
+      {
+        "type": "select",
+        "value": "delete",
+        "target": {
+          "strategy": "role",
+          "role": "combobox",
+          "name": "Request type"
+        }
+      },
+      {
+        "type": "check",
+        "target": {
+          "strategy": "label",
+          "value": "I confirm this is an authorized request"
+        }
+      },
+      {
+        "type": "checkpoint",
+        "kind": "submission",
+        "message": "Review the populated form before submitting the removal request."
+      },
+      {
+        "type": "click",
+        "destructive": true,
+        "target": {
+          "strategy": "role",
+          "role": "button",
+          "name": "Submit removal request"
+        }
+      },
+      {
+        "type": "expect",
+        "target": {
+          "strategy": "text",
+          "value": "Request received by Synthetic Broker."
+        }
+      }
+    ]
+  }
+}

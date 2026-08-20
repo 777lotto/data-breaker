@@ -1,0 +1,49 @@
+name: Bug report
+description: Report a reproducible problem that is not specific to one broker.
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never include real names, addresses, emails, phones, credentials,
+        receipts, confirmation links, screenshots, traces, or other PII.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the problem using synthetic values.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Synthetic reproduction
+      description: Include the smallest safe sequence of commands or fixture.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+    validations:
+      required: true
+
+  - type: input
+    id: platform
+    attributes:
+      label: Node.js, browser, and operating system
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I removed all personal information and credentials.
+          required: true

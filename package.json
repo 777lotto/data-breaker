@@ -1,0 +1,36 @@
+{
+  "name": "data-breaker",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Local-first automation for personal-data deletion and opt-out requests.",
+  "license": "MIT",
+  "author": "777lotto",
+  "type": "module",
+  "bin": {
+    "data-breaker": "dist/src/cli/index.js"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "npm run typecheck && npm run test",
+    "dev": "node --import tsx src/cli/index.ts",
+    "fixture": "node scripts/serve-fixture.mjs",
+    "profile:validate": "npm run dev -- profile validate",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:e2e": "node --import tsx --test tests/e2e/fake-broker.test.ts",
+    "test:unit": "node --import tsx --test tests/profile.test.ts tests/adapter.test.ts tests/plan.test.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "playwright": "^1.62.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  }
+}

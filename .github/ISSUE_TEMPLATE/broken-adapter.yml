@@ -1,0 +1,42 @@
+name: Broken adapter
+description: Report a public broker workflow that changed or stopped working.
+title: "adapter: "
+labels:
+  - adapter
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Provide public page information only. Do not attach populated forms,
+        confirmation messages, email content, screenshots, traces, or PII.
+
+  - type: input
+    id: adapter
+    attributes:
+      label: Adapter ID
+    validations:
+      required: true
+
+  - type: input
+    id: public-url
+    attributes:
+      label: Public removal-page URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: change
+    attributes:
+      label: Observed public change
+      description: Describe changed labels, steps, or policy using no user data.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: This report contains no personal information or credentials.
+          required: true
